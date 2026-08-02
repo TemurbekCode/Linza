@@ -1,0 +1,107 @@
+@import "../../styles/variables";
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 26px 5vw;
+  transition: padding 0.4s, background 0.4s, backdrop-filter 0.4s;
+}
+
+.header.scrolled {
+  padding: 16px 5vw;
+  background: rgba(11, 10, 8, 0.75);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid $line;
+}
+
+.logo {
+  font-family: $font-display;
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+
+  span {
+    color: $accent;
+  }
+}
+
+.nav ul {
+  display: flex;
+  gap: 36px;
+  list-style: none;
+}
+
+.nav a {
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: $muted;
+  position: relative;
+  padding-bottom: 4px;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 1px;
+    background: $accent;
+    transition: width 0.3s;
+  }
+
+  &:hover {
+    color: $paper;
+  }
+
+  &:hover::after {
+    width: 100%;
+  }
+}
+
+.burger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  z-index: 120;
+
+  span {
+    width: 24px;
+    height: 1px;
+    background: $paper;
+  }
+}
+
+// mobil versiya
+@media (max-width: 900px) {
+  .burger {
+    display: flex;
+  }
+
+  .nav {
+    display: none;
+  }
+
+  .nav.nav-open {
+    display: block;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 70vw;
+    background: $bg-2;
+    padding: 100px 40px;
+  }
+
+  .nav.nav-open ul {
+    flex-direction: column;
+    gap: 28px;
+  }
+}

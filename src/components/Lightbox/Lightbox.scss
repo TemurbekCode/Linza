@@ -1,0 +1,61 @@
+@import "../../styles/variables";
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(6, 5, 4, 0.96);
+  z-index: 300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s;
+}
+
+.lightbox.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.lightbox img {
+  max-width: 82vw;
+  max-height: 80vh;
+  border-radius: 4px;
+}
+
+.lb-close,
+.lb-prev,
+.lb-next {
+  position: absolute;
+  color: $paper;
+  font-family: $font-mono;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.lb-close {
+  top: 26px;
+  right: 5vw;
+}
+
+.lb-prev {
+  left: 5vw;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.lb-next {
+  right: 5vw;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+@media (max-width: 900px) {
+  .lb-prev,
+  .lb-next {
+    font-size: 11px;
+  }
+}

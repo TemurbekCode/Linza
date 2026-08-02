@@ -1,0 +1,29 @@
+@import "../../styles/variables";
+
+.cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 28px;
+  height: 28px;
+  border: 1px solid $accent-soft;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 999;
+  transform: translate(-50%, -50%);
+  transition: width 0.25s, height 0.25s, border-color 0.25s, background 0.25s;
+}
+
+.cursor.grow {
+  width: 64px;
+  height: 64px;
+  border-color: $accent;
+  background: rgba(232, 103, 42, 0.12);
+}
+
+// telefon va planshetda custom cursor kerak emas
+@media (hover: none), (pointer: coarse) {
+  .cursor {
+    display: none;
+  }
+}

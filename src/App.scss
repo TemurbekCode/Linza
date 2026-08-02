@@ -1,0 +1,115 @@
+@import "./styles/variables";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: $bg;
+  color: $paper;
+  font-family: $font-body;
+  overflow-x: hidden;
+  cursor: none;
+}
+
+// planshet/telefonda custom cursor ishlamaydi, oddiy cursor qoldiramiz
+@media (hover: none),
+(pointer: coarse) {
+  body {
+    cursor: auto;
+  }
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+}
+
+// scroll bilan ko'rinadigan bo'lakchalar uchun umumiy class
+.reveal {
+  opacity: 0;
+  transform: translateY(36px);
+  transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.eyebrow {
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: $accent;
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  &::before {
+    content: "";
+    width: 26px;
+    height: 1px;
+    background: $accent;
+  }
+}
+
+h2 {
+  font-family: $font-display;
+  font-weight: 400;
+  font-size: clamp(30px, 4vw, 52px);
+  max-width: 16ch;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 26px;
+  border: 1px solid $accent-soft;
+  border-radius: 999px;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  width: fit-content;
+  transition: background 0.3s, border-color 0.3s, color 0.3s;
+
+  &:hover {
+    background: $accent;
+    border-color: $accent;
+    color: $bg;
+  }
+}
+
+section {
+  padding: 140px 5vw;
+  position: relative;
+}
+
+@media (max-width: 900px) {
+  section {
+    padding: 90px 6vw;
+  }
+}

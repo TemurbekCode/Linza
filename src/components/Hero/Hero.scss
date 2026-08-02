@@ -1,0 +1,135 @@
+@import "../../styles/variables";
+
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 640px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  padding: 0; // section default padding kerak emas
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url("https://picsum.photos/seed/linza-hero/1600/1000");
+  background-size: cover;
+  background-position: center;
+  filter: grayscale(35%) contrast(1.05) brightness(0.65);
+  clip-path: circle(0% at 50% 50%);
+  animation: irisOpen 1.6s 0.3s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(11, 10, 8, 0.15) 0%, rgba(11, 10, 8, 0.85) 100%);
+  }
+}
+
+@keyframes irisOpen {
+  to {
+    clip-path: circle(75% at 50% 50%);
+  }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 0 5vw 90px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 40px;
+}
+
+.exif {
+  font-family: $font-mono;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  color: $accent-soft;
+  margin-bottom: 22px;
+  opacity: 0;
+  animation: fadeUp 0.8s 1.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.hero-title {
+  font-family: $font-display;
+  font-size: clamp(42px, 7vw, 96px);
+  font-weight: 400;
+  line-height: 1.02;
+  max-width: 14ch;
+  opacity: 0;
+  animation: fadeUp 0.9s 1.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+
+  em {
+    font-style: italic;
+    color: $accent;
+  }
+}
+
+.hero-side {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  max-width: 260px;
+  opacity: 0;
+  animation: fadeUp 0.9s 2.1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+
+  p {
+    color: $muted;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.aperture-cue {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  opacity: 0;
+  animation: fadeUp 0.8s 2.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+
+  svg {
+    width: 34px;
+    height: 34px;
+    animation: breathe 3.2s ease-in-out infinite;
+  }
+}
+
+@keyframes breathe {
+  0%,
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    transform: scale(0.82) rotate(14deg);
+  }
+}
+
+@media (max-width: 900px) {
+  .hero-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 28px;
+  }
+
+  .hero-title {
+    max-width: 100%;
+  }
+}
